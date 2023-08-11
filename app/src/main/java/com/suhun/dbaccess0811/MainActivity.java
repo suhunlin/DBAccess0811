@@ -2,6 +2,8 @@ package com.suhun.dbaccess0811;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -35,9 +37,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void queryFun(View view){
-
+        Cursor cursor = db.query("cust", null, null, null, null, null, null);
+        StringBuffer stringBuffer = new StringBuffer();
+        while(cursor.moveToNext()){
+            String id = cursor.getString(cursor.getColumnIndexOrThrow("cid"));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("cname"));
+            String tel = cursor.getString(cursor.getColumnIndexOrThrow("ctel"));
+            String birthday = cursor.getString(cursor.getColumnIndexOrThrow("cbirthday"));
+            String resultString = String.format("%s:%s:%s:%s\n", id, name, tel, birthday);
+            stringBuffer.append(resultString);
+        }
+        view_result.setText(stringBuffer);
     }
     public void insertFun(View view){
-
+        ContentValues views = new ContentValues();
+        views.put("cname", view_name.getText().toString());
+        views.put("ctel", view_tel.getText().toString());
+        views.put("cbirthday", view_birthday.getText().toString());
+        db.insert("cust", null, views);
+        view_name.setText("");
+        view_tel.setText("");
+        view_birthday.setText("");
     }
 }
