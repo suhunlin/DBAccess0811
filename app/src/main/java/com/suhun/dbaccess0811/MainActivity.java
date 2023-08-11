@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private String tag = MainActivity.class.getSimpleName();
     private TextView view_result;
-    private EditText view_name, view_tel, view_birthday;
+    private EditText view_name, view_tel, view_birthday, view_delete;
     private MyDBOpenHelper myDBOpenHelper;
     private SQLiteDatabase db;
 
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         view_name = findViewById(R.id.lid_nameInput);
         view_tel = findViewById(R.id.lid_telInput);
         view_birthday = findViewById(R.id.lid_birthdayInput);
+        view_delete = findViewById(R.id.lid_deleteInput);
     }
     private void initDB(){
         myDBOpenHelper = new MyDBOpenHelper(this, "suhunDB", null, 1);
@@ -73,5 +74,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, 2021, 00, 01);
         dialog.show();
+    }
+
+    public void deleteFun(View view){
+        db.delete("cust", "cid=?", new String[]{view_delete.getText().toString()});
     }
 }
