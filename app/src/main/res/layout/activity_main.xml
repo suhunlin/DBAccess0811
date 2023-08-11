@@ -107,7 +107,6 @@
             android:layout_below="@id/lid_telInput"
             android:layout_toRightOf="@id/birthdayTag"
             android:layout_alignParentRight="true"
-            android:inputType="number"
             android:minHeight="48dp"
             android:hint="Input birthday"
             />
