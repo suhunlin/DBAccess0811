@@ -1,18 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/db_bg"
     tools:context=".MainActivity">
-
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Customer Table"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:gravity="center_horizontal"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        />
+    <TextView
+        android:id="@+id/lid_queryResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:text="Query result null"
+        android:textSize="18sp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query"
+        android:textAllCaps="false"
+        android:onClick="queryFun"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#999"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/nameTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/lid_nameInput"
+            android:layout_alignBottom="@id/lid_nameInput"
+            android:text="Name:"
+            android:textSize="16sp"
+            android:gravity="fill"
+            />
+        <EditText
+            android:id="@+id/lid_nameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/nameTag"
+            android:layout_alignParentRight="true"
+            android:minHeight="48dp"
+            android:hint="Input name"
+            />
+        <TextView
+            android:id="@+id/telTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/lid_telInput"
+            android:layout_alignBottom="@id/lid_telInput"
+            android:text="Tel      :"
+            android:textSize="16sp"
+            android:gravity="fill"
+            />
+        <EditText
+            android:id="@+id/lid_telInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/telTag"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/lid_nameInput"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:hint="Input tel"
+            />
+        <TextView
+            android:id="@+id/birthdayTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/telTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/lid_birthdayInput"
+            android:layout_alignBottom="@id/lid_birthdayInput"
+            android:text="Bir      :"
+            android:textSize="16sp"
+            android:gravity="fill"
+            />
+        <EditText
+            android:id="@+id/lid_birthdayInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lid_telInput"
+            android:layout_toRightOf="@id/birthdayTag"
+            android:layout_alignParentRight="true"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:hint="Input birthday"
+            />
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert"
+        android:textAllCaps="false"
+        android:onClick="insertFun"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
