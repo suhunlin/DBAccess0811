@@ -109,6 +109,7 @@
             android:layout_alignParentRight="true"
             android:minHeight="48dp"
             android:hint="Input birthday"
+            android:onClick="dateSelectFun"
             />
     </RelativeLayout>
     <Button

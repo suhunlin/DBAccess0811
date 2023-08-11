@@ -2,11 +2,14 @@ package com.suhun.dbaccess0811;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -58,5 +61,17 @@ public class MainActivity extends AppCompatActivity {
         view_name.setText("");
         view_tel.setText("");
         view_birthday.setText("");
+    }
+
+    public void dateSelectFun(View view){
+        DatePickerDialog dialog = new DatePickerDialog(this, DatePickerDialog.THEME_DEVICE_DEFAULT_DARK,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        String pickerResult = String.format("%s-%s-%s", year, month, dayOfMonth);
+                        view_birthday.setText(pickerResult);
+                    }
+                }, 2021, 00, 01);
+        dialog.show();
     }
 }
